@@ -1,6 +1,9 @@
 <ul class="quest">
+    {% assign has_quests = false %}
     {% for plant in plants %}
-        {% if plant.quest %}
+        {% comment %} Only show the quest if the plant has one AND hasn't been collected yet {% endcomment %}
+        {% if plant.quest and plant.is_completed == false %}
+            {% assign has_quests = true %}
             <li>
                 <section>
                     <article>
@@ -19,11 +22,11 @@
                         </div>
                         <div class="headingwrapper">
                             <h3>{{ plant.quest.name }}</h3>
-                            <p>+{{ plant.quest.xp | default: 25 }}xp</p>
+                            <p>+{{ plant.quest.xp }}xp</p>
                         </div>
                     </article>
                     
-                    <p>{{ plant.quest.description }}</p>
+                    <p>{{ plant.quest.description | truncate: 120 }}</p>
                 </section>
 
                 <a class="styled quest card" href="/veldverkenner/{{ zone_slug }}/{{ plant.quest.slug }}">
@@ -34,7 +37,9 @@
                 </a>
             </li>
         {% endif %}
-    {% else %}
-        <li>Er zijn momenteel geen planten (en dus geen opdrachten) in deze zone.</li>
     {% endfor %}
+
+    {% if has_quests == false %}
+        <li>Er zijn momenteel geen nieuwe opdrachten in deze zone.</li>
+    {% endif %}
 </ul>

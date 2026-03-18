@@ -1,12 +1,12 @@
 {% if plants.size > 0 %}
     <ul class="flowerlist">
     {% for plant in plants %}
-        {% if plant.collected %}
-            <li>
-                <img class="portrait" src="/assets/images/alium.webp" alt="{{ plant.name }}">
+        {% if plant.is_completed %}
+            <li class="plant-item completed">
+                <img class="portrait" src="https://fdnd-agency.directus.app/assets/{{ plant.in_bloom }}" alt="{{ plant.name }}">
                 <article>
                     <h2>{{ plant.name }}</h2>
-                    <p>{{ plant.description }}</p>
+                    <p>{{ plant.description | truncate: 100 }}</p>
                     {% if zone_slug %}
                         <a class="styled quest plantcard" href="/veldverkenner/{{ zone_slug }}/{{ plant.slug }}">
                             Meer over deze plant
@@ -15,7 +15,7 @@
                 </article>
             </li>
         {% else %}
-            <li>
+            <li class="plant-item locked">
                 <img class="portrait" src="/assets/images/placeholder.webp" alt="Nog niet ontdekt">
                 <article>
                     <h2>Tja.. hoe zou ie heten?</h2>

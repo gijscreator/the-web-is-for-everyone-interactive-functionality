@@ -76,18 +76,19 @@
             <section class="start">
                 {% render 'partials/general-heading.liquid',
                     heading_level: 1,
-                    content: quest_title,
+                    content: quest.title,
                 %}
 
-                {% if quest.type =='button' %}
-                    <img class="landscape" src="/assets/images/alium.webp" alt="">
+                {% if quest.type == 'button' or quest.type == 'image' %}
+                    {% comment %} Ensure your quests_data or Directus data actually has quest.question_text {% endcomment %}
+                    <p>{{ quest.title }}</p> 
                 {% endif %}
                 
-                <article>
+                <article class="options-container">
                     {% for option in quest.options %}
                         {% if quest.type == 'button' %}
                             <a href="?step={% if option.value == quest.correct_answer %}correct{% else %}incorrect{% endif %}" class="styled awnser">
-                                {{ quest_options }}
+                                {{ option.text }} {% comment %} Changed from quest_options {% endcomment %}
                             </a>
                         {% elsif quest.type == 'image' %}
                             <a href="?step={% if option.value == quest.correct_answer %}correct{% else %}incorrect{% endif %}" class="quiz-image">
@@ -97,7 +98,6 @@
                     {% endfor %}
                 </article>
             </section>
-
         {% when 'correct' %}
             <section class="correct">
                 <div class="result success">
