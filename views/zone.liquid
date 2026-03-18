@@ -5,18 +5,17 @@
 {% render 'partials/zone-header.liquid', 
     plants: zone.plants, 
     zone_type: zone.type, 
-    zone_name: zone.name 
+    zone_name: zone.name,
+    zone_slug: zone_slug
 %}
 
 <main class="zone">
 <section>
     <h2>Opdrachten</h2>
     {% render 'partials/questlist.liquid', 
-        quests: quests, 
         zone_slug: zone_slug,
         zone_type: zone.type, 
-        plants: plants, 
-        
+        plants: plants
     %}
 </section>
 
@@ -25,8 +24,7 @@
     {% render 'partials/flowerlist.liquid', 
         plants: plants, 
         zone_type: zone.type, 
-        zone_slug: zone_slug,
-        quests: quests,
+        zone_slug: zone_slug
     %}
 </section>
 </main>

@@ -3,11 +3,11 @@
     {% for plant in plants %}
         {% if plant.collected %}
             <li>
-                <img class="portrait" src="/assets/images/alium.webp" alt="{{ plant.name }}">
+                <img class="portrait" src="{{ plant.in_bloom | default: '/assets/images/alium.webp' }}" alt="{{ plant.name }}">
                 <article>
                     {% render 'partials/general-heading.liquid',
                         heading_level: 2,
-                        content: {{plant.name}},
+                        content: plant.name,
                     %}
                     <p>{{ plant.description }}</p>
                     {% if zone_slug %}
