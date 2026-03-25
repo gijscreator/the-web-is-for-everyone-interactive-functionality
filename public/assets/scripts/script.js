@@ -22,7 +22,7 @@ formSumbit.addEventListener('submit', function(event) {
 
     setTimeout(() => {
         this.submit(); 
-    }, 1300); 
+    }, 1200); 
 });
 
 document.querySelectorAll('.opdracht-popover').forEach(popover => {

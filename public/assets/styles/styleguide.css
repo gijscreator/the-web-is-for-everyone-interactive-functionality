@@ -30,6 +30,8 @@ img, video {
 }
 
 body {
+    color-scheme: light dark;
+
     /* --------- font sizes --------- */
     --paragraph: clamp(1.1rem, 2vw, 1.3rem);
 	--heading-small: clamp(1.2rem, 2vw, 1rem);
@@ -51,12 +53,12 @@ body {
     --waterplandgebied-transparent: #daf1fe49;
 
     /* site wide colors */
-    --light-background: #F7F7F7;
+    --light-background: light-dark(#F7F7F7, hsl(0, 0%, 12%));
     --medium-background: #a2a2a2;
-    --dark-background: #3C3C3C;
+    --dark-background: light-dark(hsl(0, 0%, 12%), #F7F7F7);
 
-    --light-text: #F7F7F7;
-    --dark-text: #1a1a1a;
+    --light-text: light-dark(#F7F7F7, #1a1a1a);
+    --dark-text: light-dark(#1a1a1a, #F7F7F7);
     --body-background-green: #fe8b5038;
 
     /* accents and borders */
@@ -83,10 +85,10 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    
     font-family: headings;
     font-weight: 600;
     font-size: var(--heading-big);
+    color: var(--dark-text);
 }
 
 h3, h4 {
@@ -115,9 +117,16 @@ p.italic {
     font-weight: 400;
 }
 
-svg {
+svg:not(.veldverkenner) {
     width: 1.5625rem;
     height: 1.5625rem;
+    color: var(--dark-text);
+    fill: var(--dark-text);
+
+    path {
+        fill: var(--dark-text);
+        color: var(--dark-text);
+    }
 }
 
 /* margin for all pages but veldverkenner */

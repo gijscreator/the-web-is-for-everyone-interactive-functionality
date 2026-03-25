@@ -137,6 +137,10 @@ header.opdrachten-header {
         flex-direction: row-reverse;
         padding-block: 1rem;
     }
+
+    h1 {
+        color: var(--light-text);
+    }
     
     p {
         margin-top: .5rem;
@@ -192,12 +196,24 @@ ul.news.horizontal {
         background-color: var(--sierlint);
         padding: 1rem;
         border-radius: var(--border-card);
-        border: 1px solid var(--dark-border)
+        border: 1px solid var(--dark-border);
+        color: var(--light-text);
     }
 
     img {
         width: 75vw;
-        
+    }
+
+    div {
+        color: var(--light-text);
+    }
+
+    h2 {
+        color: inherit
+    }
+
+    p {
+        color: inherit
     }
 
     a {
@@ -220,13 +236,14 @@ ul.my-collection {
         width: 100%;
         border-radius: var(--border-card);
         border: 1px solid black;
+        color: var(--light-text);
         
     }
 
     a {
         display: flex;
         flex-direction: column;
-        color: var(--dark-text);
+        color: inherit;
     }
 
     article {
@@ -234,6 +251,11 @@ ul.my-collection {
 
         h2 {
             margin-block: .5rem;
+            color: inherit;
+        }
+
+        h3 {
+            color: inherit;
         }
     }
     
@@ -254,12 +276,14 @@ ul.quest {
         border-radius: var(--border-card);
 
         /* gemaakt met https://html-css-js.com/css/generator/box-shadow/ */
-        -webkit-box-shadow: 0px 10px 13px -7px #000000, 0px 1px 15px 5px rgba(0,0,0,0); 
         box-shadow: 0px 10px 13px -7px #000000, 0px 1px 15px 5px rgba(0,0,0,0);
     }
 
+    h3 {
+        color: var(--light-text);
+    }
+
     section {
-        
         padding: .7rem;
 
     }
@@ -307,6 +331,7 @@ ul.quest {
 
 /* partial detailpage.liquid */
 section.detailpage {
+    color: var(--dark-text);
 
     img {
 
@@ -314,12 +339,14 @@ section.detailpage {
 
     p.date {
         margin-block: 1rem;
+        color: inherit;
     }
 
     article.detaillist-plants {
-
+        color: inherit;
         p {
             margin-block: .5rem;
+            color: inherit;
         }
 
     }
