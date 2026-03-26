@@ -9,23 +9,6 @@ if (back) {
     });
 }
 
-const collectionIcon = document.querySelector('.collection-icon');
-const formSubmit = document.querySelector('.collectbutton'); 
-const plantImage = document.querySelector('.plant-animated');
-
-if (formSubmit) {
-    formSubmit.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        if (plantImage) plantImage.classList.add('active');
-        if (collectionIcon) collectionIcon.classList.add('active');
-
-        setTimeout(() => {
-            this.submit(); 
-        }, 1200); 
-    });
-}
-
 const popovers = document.querySelectorAll('.opdracht-popover');
 if (popovers.length > 0) {
     popovers.forEach(popover => {

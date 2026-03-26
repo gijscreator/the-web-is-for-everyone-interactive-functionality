@@ -1,5 +1,7 @@
 import express from 'express'
 import { Liquid } from 'liquidjs'
+import { fileURLToPath } from 'url';
+import path from 'path';
 
 const app = express()
 const API_BASE = 'https://fdnd-agency.directus.app/items'
@@ -8,6 +10,8 @@ const USER_ID = 2
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const engine = new Liquid()
 app.engine('liquid', engine.express())
 app.set('views', './views')
@@ -280,5 +284,9 @@ app.post('/veldverkenner/:zone_slug/:item_slug', async (request, response) => {
         response.status(500).send('Fout bij opslaan van je voortgang.')
     }
 })
+
+// i use gsap for smooth animations
+
+app.use('/gsap', express.static(path.join(__dirname, 'node_modules/gsap/dist/')));
 
 app.listen(8000, () => console.log('Server started on http://localhost:8000'))

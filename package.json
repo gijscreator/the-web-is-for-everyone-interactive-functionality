@@ -25,6 +25,7 @@
   "homepage": "https://github.com/fdnd-task/the-web-is-for-everyone-interactive-functionality#readme",
   "dependencies": {
     "express": "latest",
+    "gsap": "^3.14.2",
     "liquidjs": "latest",
     "ngrok": "^5.0.0-beta.2",
     "node": "^22.22.1",
