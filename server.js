@@ -71,7 +71,6 @@ const userAlreadyCollectedPlant = async ({ userId, plantId }) => {
 const getPlantIdsFromZone = (zone) => {
     if (!zone.plants?.length) return []
     return zone.plants.map(p => {
-        // junction object: { id, frankendael_plants_id, frankendael_zones_id }
         return typeof p === 'object' ? p.frankendael_plants_id : p
     }).filter(Boolean)
 }
@@ -119,7 +118,7 @@ app.get('/veldverkenner', async (req, res) => {
     const zonesWithQuestData = allZones.map(zone => {
         const plantIdsInZone = getPlantIdsFromZone(zone)
         const plantInZone = allPlants.find(plant => 
-            plantIdsInZone.includes(plant.id) && plant.quest_text
+            plantIdsInZone.includes(plant.id) && plant.quest_title
         )
         const normalized = normalizePlant(plantInZone)
         zone.quest = normalized ? { ...normalized, plant: normalized } : null
@@ -142,8 +141,6 @@ app.get('/veldverkenner/:zone_slug', async (req, res) => {
     ])
 
     const currentZone = zoneData[0]
-
-    // Extract plant IDs from the junction objects in the zone
     const plantIds = getPlantIdsFromZone(currentZone)
 
     const plantsInZone = plantIds.length 
@@ -168,13 +165,13 @@ app.get('/veldverkenner/:zone_slug', async (req, res) => {
     })
 })
 
-// Item Detail (Quest/Plant)
+// Quest Detail — always renders opdracht
 app.get('/veldverkenner/:zone_slug/:item_slug', async (req, res) => {
     const zoneData = await fetchData(`frankendael_zones?filter[slug][_eq]=${req.params.zone_slug}`)
     const plantData = await fetchData(`frankendael_plants?filter[slug][_eq]=${req.params.item_slug}&fields=*.*`)
     const currentPlant = normalizePlant(plantData[0])
-    
-    const renderData = {
+
+    res.render('opdracht.liquid', {
         quest: currentPlant, 
         plant: currentPlant, 
         zone: zoneData[0], 
@@ -183,13 +180,7 @@ app.get('/veldverkenner/:zone_slug/:item_slug', async (req, res) => {
         user_id: USER_ID,
         zone_type: zoneData[0].type,
         current_path: req.path
-    }
-
-    if (currentPlant?.quest_title) {
-        res.render('opdracht.liquid', renderData)
-    } else {
-        res.render('plant-detail.liquid', renderData)
-    }
+    })
 })
 
 // News Overview
@@ -217,7 +208,7 @@ app.get('/nieuws/:slug', async (req, res) => {
     })
 })
 
-// Collection — only show plants collected by the user
+// Collection overview — only plants collected by the user
 app.get('/collectie', async (req, res) => {
     const [collectedPlants, allZones] = await Promise.all([
         getCollectedPlants(USER_ID),
@@ -235,6 +226,18 @@ app.get('/collectie', async (req, res) => {
 
     res.render('collectie.liquid', { 
         plants: plantsWithZoneDetails, 
+        zone_type: 'collectie',
+        current_path: req.path
+    })
+})
+
+// Plant Detail from collection — always renders plant-detail
+app.get('/collectie/:plant_slug', async (req, res) => {
+    const plantData = await fetchData(`frankendael_plants?filter[slug][_eq]=${req.params.plant_slug}&fields=*.*`)
+    const currentPlant = normalizePlant(plantData[0])
+
+    res.render('plant-detail.liquid', { 
+        plant: currentPlant,
         zone_type: 'collectie',
         current_path: req.path
     })

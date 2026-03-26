@@ -9,7 +9,7 @@
 
         {% for plant in plants limit: loop_limit %}
         <li class="{{ plant.main_zone.type }}">
-            <a href="/veldverkenner/{{ plant.main_zone.slug }}/{{ plant.slug }}">
+            <a href="/collectie/{{ plant.slug }}">
                 <article>
                     <h2>{{ plant.name }}</h2>
                     <h3 class="italic">{{ plant.latin | truncate: 20 }}</h3>
