@@ -3,13 +3,13 @@
     {% for plant in plants %}
         {% if plant.collected %}
             <li class="{{ zone_type }}">
-                <img class="portrait" src="{{ plant.in_bloom | default: '/assets/images/alium.webp' }}" alt="{{ plant.name }}">
+                <img class="square" src="{{ plant.in_bloom | default: '/assets/images/alium.webp' }}" alt="{{ plant.name }}">
                 <article>
                     {% render 'partials/general-heading.liquid',
                         heading_level: 2,
                         content: plant.name,
                     %}
-                    <p>{{ plant.description | truncatewords: 10 }}</p>
+                    <p>{{ plant.omscription | truncatewords: 10 }}</p>
                     {% if zone_slug %}
                         <a class="styled quest plantcard" href="/collectie/{{ plant.slug }}">
                             Meer over deze plant
@@ -19,7 +19,7 @@
             </li>
         {% else %}
             <li class="{{ zone_type }}">
-                <img class="portrait" src="/assets/images/placeholder.webp" alt="Nog niet ontdekt">
+                <img class="square" src="/assets/images/placeholder.webp" alt="Nog niet ontdekt">
                 <article>
                     {% render 'partials/general-heading.liquid',
                         heading_level: 2,

@@ -247,6 +247,26 @@ app.get('/collectie/:plant_slug', async (req, res) => {
     })
 })
 
+app.get('/account', async (req, res) => {
+    const userId = 2; // Gijs
+    const url = `https://fdnd-agency.directus.app/items/frankendael_users/${userId}`;
+
+    try {
+        const response = await fetch(url);
+        const result = await response.json();
+        const user = result.data;
+
+        // Render your account file (account.liquid or account.ejs)
+        res.render('account.liquid', { 
+            user: user 
+        });
+
+    } catch (error) {
+        console.error("Error loading account:", error);
+        res.status(500).send("Error loading account data");
+    }
+});
+
 // POST: Save quest progress to Directus
 app.post('/veldverkenner/:zone_slug/:item_slug', async (request, response) => {
     const { plant_id, user_id } = request.body

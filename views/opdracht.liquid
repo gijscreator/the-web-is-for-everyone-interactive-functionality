@@ -103,7 +103,7 @@
         {% when 'correct' %}
             <section class="correct">
                 <article class="result success">
-                    <svg class="decorative" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="decorative check" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M58.6666 29.5467V32C58.6633 37.7505 56.8013 43.3458 53.3581 47.9516C49.915 52.5573 45.0753 55.9267 39.5609 57.5571C34.0464 59.1876 28.1526 58.9918 22.7585 56.9989C17.3644 55.0061 12.759 51.323 9.62915 46.4989C6.4993 41.6748 5.0127 35.9682 5.39106 30.2302C5.76942 24.4922 7.99247 19.0302 11.7287 14.6589C15.4649 10.2876 20.514 7.24106 26.1231 5.97377C31.7322 4.70647 37.6006 5.28628 42.8533 7.62671M58.6666 10.6667L31.9999 37.36L23.9999 29.36" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
 
@@ -112,14 +112,22 @@
                         content:"Helemaal goed! 🎉",
                         class: "bigheading",
                     %}
-                    <p>Je hebt {{ quest.xp }} XP verdiend.</p>
-
+                    <p>Je bent een echte natuur kenner! Goed gedaan</p>
+                    <p>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.0001 1.66675L12.5751 6.88341L18.3334 7.72508L14.1667 11.7834L15.1501 17.5167L10.0001 14.8084L4.85008 17.5167L5.83341 11.7834L1.66675 7.72508L7.42508 6.88341L10.0001 1.66675Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        +{{plant.xp}} xp
+                    </p>
                     <form class="collectbutton" action="/veldverkenner/{{ zone_slug }}/{{ quest.slug }}" method="POST">
                         <input type="hidden" name="user_id" value="{{ user_id }}">
                         <input type="hidden" name="plant_id" value="{{ quest.id }}">
                         
                         <button type="submit" class="styled quest">
-                            Verzamel plant & Verder
+                            Ga verder 
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 18L15 12L9 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                         </button>
                     </form>
                 </article>
@@ -127,12 +135,26 @@
             </section>
 
         {% when 'incorrect' %}
-            <section class="correct">
-                <div class="result error">
-                    <h2>Helaas, dat is niet juist.</h2>
-                    <p>Kijk nog eens goed naar de plant en probeer het opnieuw.</p>
-                    <a href="?step=start" class="styled quest">Opnieuw proberen</a>
-                </div>
+            <section class="incorrect">
+                <article class="result incorrect">
+                    <img src="/assets/images/foutje.webp" alt="falling leaves">
+
+                    {% render 'partials/general-heading.liquid',
+                        heading_level: 1,
+                        content:"Helaas, dat is niet goed",
+                        class: "bigheading",
+                    %}
+                    <p>Probeer het gerust nog een keer! (zonder google)</p>
+                    <a href="?step=start" class="styled quest">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 12C3 13.78 3.52784 15.5201 4.51677 17.0001C5.50571 18.4802 6.91131 19.6337 8.55585 20.3149C10.2004 20.9961 12.01 21.1743 13.7558 20.8271C15.5016 20.4798 17.1053 19.6226 18.364 18.364C19.6226 17.1053 20.4798 15.5016 20.8271 13.7558C21.1743 12.01 20.9961 10.2004 20.3149 8.55585C19.6337 6.91131 18.4802 5.50571 17.0001 4.51677C15.5201 3.52784 13.78 3 12 3C9.48395 3.00947 7.06897 3.99122 5.26 5.74L3 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3 3V8H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Probeer het opnieuw
+                    </a>
+                    <a class="secondary" href="/veldverkenner">Ik kom later terug</a>
+                </article>
+                <canvas id="leafCanvas"></canvas>
             </section>
     {% endcase %}
 </main>

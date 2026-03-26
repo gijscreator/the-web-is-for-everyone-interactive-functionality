@@ -378,12 +378,43 @@ main.quest {
             align-items: center;
             justify-content: center;
 
-            svg {
-                width: 5rem;
-                height: 5rem;
+            svg.check {
+                width: 8rem;
+                height: 8rem;
                 background-color: var(--questbutton);
-                padding: 1rem;
+                padding: 2rem;
                 border-radius: var(--border-round);
+
+                path {
+                    fill: transparent;
+                }
+            }
+
+            p:nth-of-type(2) {
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                margin-block: 1rem;
+                width: 7rem;
+                height: 2rem;
+                padding: .5rem;
+                border-radius: var(--border-button);
+                background-color: var(--questbutton);
+                color: var(--always-light);
+
+                svg {
+                    width: 1rem;
+                    height: 1rem;
+                }
+            }
+
+            button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: none;
+                width: 90vw;
+                text-align: center;
             }
 
             h1 {
@@ -405,10 +436,46 @@ main.quest {
             pointer-events: none;
             transform-origin: center center;
         }
+    }
+    section.incorrect {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        align-items:center;
+        justify-content: flex-start;
+        width: 100%;
+        min-height: 100dvh;
+        overflow: hidden;
 
-        section.incorrect {
-            bottom: 0;
-            right: 0;
+        #leafCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        article {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            img {
+                width: 50%;
+                height: 50%;
+            }
+        }
+
+        .leaf {
+            position: absolute;
+            top: -0.625rem; 
+            width: 2.5rem;  
+            user-select: none;
+            opacity: 1;
+            pointer-events: none; 
         }
     }
 }

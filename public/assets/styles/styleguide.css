@@ -91,6 +91,7 @@ body {
 
     /* exclusions for light dark */
     --always-black: hsl(0, 0%, 12%);
+    --always-light: #ffffff;
 
     background-color: var(--light-background);
 }
@@ -209,10 +210,6 @@ main:not(.veldverkenner) {
     &.awnser {
         background-color: transparent;
         border: 2px solid var(--dark-border);
-    }
-
-    &.plantcard {
-        width: 80%;
     }
 }
 
