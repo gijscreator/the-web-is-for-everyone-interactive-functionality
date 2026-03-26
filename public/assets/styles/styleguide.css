@@ -32,6 +32,15 @@ img, video {
 body {
     color-scheme: light dark;
 
+    /* Added fallback for light dark mode dark mode */
+    @media (prefers-color-scheme: dark) {
+        --light-background: hsl(0, 0%, 12%);
+        --medium-background: #a2a2a2;
+        --dark-background: hsl(0, 0%, 12%);
+        --light-text:#F7F7F7;
+        --dark-text:#1a1a1a;
+    }
+
     /* --------- font sizes --------- */
     --paragraph: clamp(1.1rem, 2vw, 1.3rem);
 	--heading-small: clamp(1.2rem, 2vw, 1rem);
@@ -62,10 +71,10 @@ body {
     --body-background-green: #fe8b5038;
 
     /* accents and borders */
-    --active: #00602d;
+    --active: light-dark(#00602d, #00b253);
     --light-border:#ffffff;
     --lighter-border:#B0B0B0;
-    --dark-border: #1b1b1b;
+    --dark-border: light-dark(#1b1b1b,#ffffff);
 
     /* --------- borders --------- */
     --border-image: 1rem;
@@ -80,8 +89,10 @@ body {
     --incorrect: #8F0000;
     --questbutton: #004121;
 
-    background-color: var(--light-background);
+    /* exclusions for light dark */
+    --always-black: hsl(0, 0%, 12%);
 
+    background-color: var(--light-background);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -117,7 +128,7 @@ p.italic {
     font-weight: 400;
 }
 
-svg:not(.veldverkenner) {
+svg.decorative {
     width: 1.5625rem;
     height: 1.5625rem;
     color: var(--dark-text);
@@ -212,6 +223,18 @@ a.back {
     gap: .5rem;
     color: var(--dark-text);
     margin-block: 1rem;
+
+    &.blacklink {
+        color: var(--always-dark);
+
+        svg {
+            fill: var(--always-dark);
+            
+            path {
+                fill: var(--always-dark);
+            }
+        }
+    }
 }
 
 span.bold {

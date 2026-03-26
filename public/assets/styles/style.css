@@ -60,6 +60,10 @@ header.veldverkenner {
     min-height: 5rem;
     height: 10dvh;
     max-height: 8.75rem;
+
+    p {
+        color: var(--dark-text)
+    }
 }
 
 main.veldverkenner {
@@ -320,18 +324,26 @@ quest page
 
 main.quest {
     position: relative;
+    
     section {
         p {
             margin-block: 1rem;
+            color: var(--dark-text);
         }
     }
     /* section with intro content */
     section.intro {
+        color: var(--dark-text);
 
         div.xp-heading {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            color: inherit;
+        }
+
+        p {
+            color: inherit;
         }
 
         /* section with intro */
