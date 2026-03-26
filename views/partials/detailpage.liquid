@@ -4,7 +4,7 @@
         heading_level: 2,
         content: title,
     %}
-    <img class="landscape" src="{{ image }}" alt="">
+    <img style="--vt: img-{{ slug }}" class="landscape viewt" src="{{ image }}" alt="">
     {% if date %}
         <p class="date"> Geplaatst op {{ date }}</p>
     {% endif %}

@@ -1,0 +1,18 @@
+@media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+        navigation: auto;
+    }
+}
+
+::view-transition-group(root) {
+    animation-duration: 0s;
+}
+
+img.viewt {
+    view-transition-name: var(--vt);
+    view-transition-class: image;
+}
+
+::view-transition-group(.image) {
+    animation-duration: 0.5s;
+}

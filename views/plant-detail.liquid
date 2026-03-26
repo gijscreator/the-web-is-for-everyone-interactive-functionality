@@ -1,4 +1,6 @@
-{% render 'partials/head.liquid' %}
+{% render 'partials/head.liquid'
+    extra: "/assets/styles/detail.css"
+%}
 <main>
     {% render 'partials/detailpage.liquid'
         title: plant.name,

@@ -12,7 +12,7 @@
     font-family: italic;
     font-style: italic;
     src: url(/assets/fonts/italic-font.ttf);
-}
+}    
 
 * {
     margin: 0;
@@ -30,6 +30,7 @@ img, video {
 }
 
 body {
+
     color-scheme: light dark;
 
     /* Added fallback for light dark mode dark mode */
