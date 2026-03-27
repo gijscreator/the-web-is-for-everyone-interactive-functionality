@@ -15,6 +15,29 @@ main.welcome {
 /***********************************
 Home page
 ***********************************/
+header.home {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+
+    a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--dark-text);
+    }
+
+    svg {
+        width: 2rem;
+        height: 2rem;
+
+        fill: var(--dark-text);
+
+        path {
+            fill: var(--dark-text);
+        }
+    }
+}
 
 main.home {
 
