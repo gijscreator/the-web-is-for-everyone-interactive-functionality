@@ -1,5 +1,8 @@
 gsap.registerPlugin(MotionPathPlugin);
 
+// Check for system preference once at the start
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 /* ------------ Animate plant in collection --------------- */
 
 const collectForm = document.querySelector('.collectbutton');
@@ -8,6 +11,11 @@ const plantIcon = document.querySelector('.collection-icon');
 
 if (collectForm && plant && plantIcon) {
     collectForm.addEventListener('submit', function(event) {
+        // If user prefers reduced motion, let the form submit normally without animation
+        if (prefersReducedMotion) {
+            return; 
+        }
+
         event.preventDefault();
         const iconRect = plantIcon.getBoundingClientRect();
         const plantRect = plant.getBoundingClientRect();
@@ -46,14 +54,15 @@ if (collectForm && plant && plantIcon) {
     });
 }
 
-/* ------------ Animate plant in collection --------------- */
-
-
-
-/* ------------ Animate leafes when quest is wrong --------------- */
+/* ------------ Animate leaves when quest is wrong --------------- */
 
 window.addEventListener("load", () => {
+    // Skip heavy canvas animations if reduced motion is requested
+    if (prefersReducedMotion) return;
+
     const canvas = document.getElementById("leafCanvas");
+    if (!canvas) return;
+
     const ctx = canvas.getContext("2d");
     const leafImg = new Image();
     leafImg.src = "/assets/images/leaf.webp";
@@ -87,7 +96,6 @@ window.addEventListener("load", () => {
                 repeat: -1,
                 ease: "none",
                 delay: gsap.utils.random(0, .5)
-
             });
 
             // Swaying
@@ -103,7 +111,6 @@ window.addEventListener("load", () => {
             leaves.push(leaf);
         }
         
-        // Use GSAP's ticker to draw (it's synced with the browser's refresh rate)
         gsap.ticker.add(render);
     };
 
@@ -116,19 +123,19 @@ window.addEventListener("load", () => {
             ctx.translate(leaf.x + leaf.sideSway, leaf.y);
             ctx.rotate(leaf.rotation * Math.PI / 180);
             ctx.scale(leaf.scale, leaf.scale);
-            ctx.drawImage(leafImg, -20, -20, 40, 40); // center the image draw
+            ctx.drawImage(leafImg, -20, -20, 40, 40);
             ctx.restore();
         });
     }
 });
 
-/* ------------ Animate leafes when quest is wrong --------------- */
+/* ------------ Animate confetti when quest is right --------------- */
 
 window.addEventListener("load", () => {
-    // Check if the URL contains "correct"
     const url = window.location.search;
 
-    if (url.includes("step=correct") && !url.includes("incorrect")) {
+    // Skip confetti if user prefers reduced motion
+    if (url.includes("step=correct") && !url.includes("incorrect") && !prefersReducedMotion) {
         
         const duration = 3 * 1000;
         const animationEnd = Date.now() + duration;
@@ -138,7 +145,6 @@ window.addEventListener("load", () => {
             return Math.random() * (max - min) + min;
         }
 
-        // Create a continuous "celebration" for 3 seconds
         const interval = setInterval(function() {
             const timeLeft = animationEnd - Date.now();
 
@@ -148,14 +154,12 @@ window.addEventListener("load", () => {
 
             const particleCount = 50 * (timeLeft / duration);
             
-            // Trigger from left side
             confetti({
                 ...defaults,
                 particleCount,
                 origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
             });
             
-            // Trigger from right side
             confetti({
                 ...defaults,
                 particleCount,
@@ -164,7 +168,3 @@ window.addEventListener("load", () => {
         }, 250);
     }
 });
-
-/* ------------ Animate confetti when quest is right --------------- */
-
-
