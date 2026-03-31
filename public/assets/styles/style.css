@@ -64,7 +64,7 @@ main.home {
     }
 
     section:nth-of-type(2) {
-
+        margin-block: 2rem;
         article {
 
         }
