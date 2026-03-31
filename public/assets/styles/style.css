@@ -49,9 +49,14 @@ main.home {
         justify-content: flex-start;
         gap: 1rem;
 
-    h2 {
-        margin-block: 1rem;
+        h2 {
+            margin-block: 1rem;
+        }
     }
+
+    p {
+        margin-bottom: 1rem;
+        color: var(--dark-text);
     }
 
     section:nth-of-type(1) {

@@ -5,7 +5,7 @@ import path from 'path';
 
 const app = express();
 const API_BASE = 'https://fdnd-agency.directus.app/items';
-const USER_ID = 5;
+const USER_ID = 2;
 
 // Endpoint for fetching plants specific to our user
 const getUserPlants = `frankendael_users_plants?filter[frankendael_users_id]=${USER_ID}&fields=frankendael_plants_id`;
@@ -132,7 +132,7 @@ app.get('/veldverkenner', async (request, response) => {
         const [allZones, allPlants, collectedIds] = await Promise.all([
             fetchData('frankendael_zones?fields=*.*'),
             fetchData('frankendael_plants?fields=*.*'),
-            getCollectedIds(getUserPlants) // Efficiently checking against user-specific data
+            getCollectedIds(getUserPlants)
         ]);
 
         const statusMap = {}; 
@@ -159,7 +159,7 @@ app.get('/veldverkenner', async (request, response) => {
         
         response.render('veldverkenner.liquid', { 
             zones: zonesWithQuestData, 
-            status: JSON.stringify(statusMap), 
+            status: statusMap, 
             progress: collectedIds.size, 
             zone_type: 'veldverkenner',
             current_path: request.path

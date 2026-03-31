@@ -66,22 +66,6 @@ body {
     color-scheme: light dark;
     transition: background-color, color, .3s linear;
 
-    &:has(#color-mode-light:checked) {
-        color-scheme: light;
-    }
-    
-    &:has(#color-mode-dark:checked) {
-        color-scheme: dark;
-    }
-
-    /* Added fallback for light dark mode dark mode */
-    @media (prefers-color-scheme: dark) {
-        --light-background: hsl(0, 0%, 12%);
-        --medium-background: #a2a2a2;
-        --dark-background: hsl(0, 0%, 12%);
-        --light-text:#F7F7F7;
-        --dark-text:#1a1a1a;
-    }
 
     /* --------- font sizes --------- */
     --paragraph: clamp(1.1rem, 2vw, 1.3rem);
@@ -230,6 +214,10 @@ main:not(.veldverkenner) {
         background-color: transparent;
         border: var(--dark-border) 2px solid;
         
+    }
+
+    &.margin {
+        margin-block: 1rem;
     }
 
     /* finished link button look */
