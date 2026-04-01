@@ -1,9 +1,15 @@
 <section class="detailpage">
-    {% render 'partials/linkback.liquid' %}
+    {% render 'partials/breadcrumbs.liquid' %}
+
+    {% render 'partials/breadcrumbs.liquid' 
+        current_path: current_path,
+    %}
+    
     {% render 'partials/general-heading.liquid',
         heading_level: 2,
         content: title,
     %}
+
     <img style="--vt: img-{{ slug }}" class="landscape viewt" src="{{ image }}" alt="">
     {% if date %}
         <p class="date"> Geplaatst op {{ date }}</p>

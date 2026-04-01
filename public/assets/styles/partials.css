@@ -385,6 +385,30 @@ section.detailpage {
 
     }
 
+    nav {
+        display: flex;
+        ul {
+            display: flex;
+
+            li {
+
+                a {
+                    color: var(--active);
+                    text-decoration: underline;
+                }
+
+                a.active {
+                    color: var(--dark-text);
+                    text-decoration: none;
+                }
+
+                span {
+                    margin-inline: .25rem;
+                }
+            }
+        }
+    }
+
     p.date {
         margin-block: 1rem;
         color: inherit;

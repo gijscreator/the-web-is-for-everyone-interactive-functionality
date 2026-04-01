@@ -264,7 +264,6 @@ a.back {
     color: var(--dark-text);
     margin-block: 1rem;
     width: fit-content;
-    padding-inline: 1rem;
     
     &.blacklink {
         color: var(--always-dark);

@@ -28,7 +28,7 @@
                 content: "Mijn Collectie",
             %}  
         </div>
-        <p>Hier vind je altijd jouw verzamelde planten liever jouw hele collectie zien? Dat kan <a href="/collectie">hier</a></p>
+        <p>Hier vind je jouw meest recent verzamelde planten. Liever jouw hele collectie zien? Dat kan <a href="/collectie/in_bloom">hier</a></p>
         {% render 'partials/mycollection.liquid', 
             plants: plants, 
             zone_type: zone_type, 
@@ -45,7 +45,7 @@
                 content: "Onze veldverkenner",
             %}  
         </div>
-        <p>Ben jij ready voor een uitdaging? Op onze veldverkenner doe jij leuke opdrachten en leer je wat bij over het groen in ons park</p>
+        <p>Ben jij ready voor een uitdaging? Op onze veldverkenner doe jij leuke opdrachten en leer je wat bij over het groen in ons park.</p>
         <img class="landscape" src="/assets/images/map-image.webp" alt="our veldverkenner map">
         <a class="styled secondary margin" href="/veldverkenner">Naar onze veldverkenner</a>
     </section>
@@ -58,7 +58,7 @@
                 </svg>
                 <h2>Laatste nieuwsberichten</h2>
             </div>
-            <p>Hier zijn de 4 laatste updates over Bloemenveld Frankendael.<a href="/nieuws"> Bekijk hier</a> alle nieuwsberichten.</p>
+            <p>Hier zie je altijd de 4 laatste updates over Bloemenveld Frankendael.<a href="/nieuws"> Bekijk hier</a> alle nieuwsberichten.</p>
             {% render 'partials/newsitems.liquid', 
                 news: news, 
                 current_path: current_path %}

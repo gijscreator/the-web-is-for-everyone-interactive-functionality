@@ -57,6 +57,12 @@ main.home {
     p {
         margin-bottom: 1rem;
         color: var(--dark-text);
+
+        a {
+            color: var(--active);
+            text-decoration: underline;
+            font-weight: 900;
+        }
     }
 
     section:nth-of-type(1) {
@@ -583,13 +589,13 @@ main.collectie {
             transition: all 0.3s ease;
             width: 50%;
             border-radius: 1rem 0 0 1rem;
-            border: 2px solid white;
+            border: 2px solid var(--dark-text);
             border-right: none;
             text-align: center;
         
             &:nth-of-type(2) {
                 border-radius: 0 1rem 1rem 0 ;
-                border: 2px solid white;
+                border: 2px solid var(--dark-text);
                 border-left: none;
             }
 

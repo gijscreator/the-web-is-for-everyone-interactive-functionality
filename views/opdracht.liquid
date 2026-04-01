@@ -1,6 +1,6 @@
 {% render 'partials/head.liquid'%}
 <main class="quest" data-zone="{{ zone_type }}">
-    {% render 'partials/linkback.liquid' %}
+    {% render 'partials/breadcrumbs.liquid' %}
 
     {% case state %}
         {% when 'intro' %}

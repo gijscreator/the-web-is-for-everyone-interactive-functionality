@@ -1,0 +1,17 @@
+{% assign parts = current_path | split: "/" %}
+<nav class="breadcrumb-container">
+    <ul class="breadcrumbs">
+        {% for part in parts %}
+        {% unless part == "" %}
+            <li class="breadcrumb-item">
+            <a href="/{{ part }}" class="{% if forloop.last %}active{% endif %}">
+                {{ part | capitalize }}
+            </a>
+            {% unless forloop.last %}
+                <span class="separator">></span>
+            {% endunless %}
+            </li>
+        {% endunless %}
+        {% endfor %}
+    </ul>
+</nav>
