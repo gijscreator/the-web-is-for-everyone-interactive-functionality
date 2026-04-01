@@ -376,6 +376,10 @@ ul.quest {
     margin-block: 1.5rem;
 }
 
+.bigheading {
+    font-size: 2.4rem;
+}
+
 @keyframes flowIn {
     to {
         opacity: 1;

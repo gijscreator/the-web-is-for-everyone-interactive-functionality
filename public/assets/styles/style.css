@@ -3,12 +3,19 @@
 Welcome page
 ***********************************/
 
-main.welcome {
+body:has(main.welcome) {
+    background: linear-gradient(180deg, hsla(141, 81%, 87%, 1) 0%, hsla(0, 0%, 100%, 1) 62%);
+    min-height: 100dvh;
+}
 
+main.welcome {
+    
     section {
         width: 100%;
-        overflow: hidden;
-        padding: 2rem;
+        
+        img {
+            margin-top: 2rem;
+        }
     }
 }
 

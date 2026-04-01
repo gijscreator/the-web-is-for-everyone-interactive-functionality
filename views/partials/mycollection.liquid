@@ -14,7 +14,7 @@
                     <h2>{{ plant.name }}</h2>
                     <h3 class="italic">{{ plant.latin | truncate: 20 }}</h3>
                 </article>
-                <img class="square" src="{{ plant.in_bloom }}" alt="{{ plant.name }}">
+                <img class="square" src="{{ plant.in_bloom }}" alt="{{ plant.name }}" fetchpriority=high>
             </a>    
         </li>
         {% endfor %}

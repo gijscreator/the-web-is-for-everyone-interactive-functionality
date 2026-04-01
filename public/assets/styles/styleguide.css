@@ -372,6 +372,14 @@ img.square {
     border-radius: var(--border-image);
 }
 
+img.round {
+    object-fit: cover;
+    object-position: center;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--border-round);
+}
+
+
 img.landscape {
     object-fit: cover;
     object-position: center;

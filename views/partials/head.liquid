@@ -3,35 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="{{ waterplandgebied }}" />
+    
+    <meta name="theme-color" content="{{ waterplandgebied | default: '#ffffff' }}" />
+    
     <title>bloemenveld frankendael</title>
-    <link rel="dns-prefetch" href="https://https://uncoifed-syndesmotic-kara.ngrok-free.dev">
-    <link rel="preconnect" href="https://https://uncoifed-syndesmotic-kara.ngrok-free.dev">   
+    
+    <link rel="dns-prefetch" href="https://uncoifed-syndesmotic-kara.ngrok-free.dev">
+    <link rel="preconnect" href="https://uncoifed-syndesmotic-kara.ngrok-free.dev">   
+    
     <meta name="description" content="Ontdek de planten en zones van Bloemenveld Frankendael. Bekijk je persoonlijke plantencollectie.">
     <link rel="canonical" href="https://server-side-rendering-server-side-website-auoy.onrender.com/"/>
-    <link rel="manifest" href="manifest.webmanifest">
-    <meta name="theme-color" content="#ffffff" />
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="manifest" href="/manifest.webmanifest">
+    
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Bloemenveld">
-    <link rel="shortcut icon" href="assets/images/alium.webp" type="image/x-icon">
-    <link rel="icon" href="assets/images/alium.webp" type="image/x-icon">
-    <link rel="apple-touch-icon" href="assets/images/alium.webp">
-    <link rel="android-chrome-192x192" type="image/png" sizes="192x192" href="assets/images/alium.webp">
-    <link rel="android-chrome-512x512" type="image/png" sizes="512x512" href="assets/images/alium.webp">
-    <link rel="favicon-16x16" type="image/png" sizes="16x16" href="assets/images/alium.webp">
-    <link rel="favicon-32x32" type="image/png" sizes="16x16" href="assets/images/alium.webp">
+    
+    <link rel="shortcut icon" href="/assets/images/alium.webp" type="image/webp">
+    <link rel="icon" href="/assets/images/alium.webp" type="image/webp">
+    <link rel="apple-touch-icon" href="/assets/images/alium.webp">
+    
+    <link rel="icon" type="image/webp" sizes="192x192" href="/assets/images/alium.webp">
+    <link rel="icon" type="image/webp" sizes="512x512" href="/assets/images/alium.webp">
+    
     <meta name="pwa-capable" content="yes">
+    
     <link rel="stylesheet" href="/assets/styles/styleguide.css">
     <link rel="stylesheet" href="/assets/styles/style.css"> 
     <link rel="stylesheet" href="/assets/styles/partials.css">
     <link rel="stylesheet" href="{{ extra }}">
+    
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
     <script src="/assets/scripts/script.js" defer></script>
     <script src="/gsap/gsap.min.js" defer></script>
     <script src="/gsap/MotionPathPlugin.min.js" defer></script>
     <script src="/assets/scripts/animations.js" defer></script>
-    
 </head>
-<body class="{% if user.theme == 'dark' %}dark-mode{% endif %}">
+<body>
     
