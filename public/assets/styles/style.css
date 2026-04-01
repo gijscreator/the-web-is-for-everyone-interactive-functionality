@@ -341,8 +341,28 @@ section.uitleg-popover {
 Zone page
 ***********************************/
 
+header.opdrachten-header {
+
+    nav.breadcrumb-container {
+
+        li.breadcrumb-item {
+            a {
+                color: var(--always-dark);
+
+                &.active {
+                    color: var(--always-dark);
+                }
+            }
+
+
+        }
+    }
+}
+
 main.zone {
     padding: 0;
+
+
 
     h1 {
         margin-block: 1rem;

@@ -415,34 +415,35 @@ section.detailpage {
 }
 
 
-nav.breadcrumb-container {
+.breadcrumb-container {
 
+    display: flex;
+    margin-block: 1rem;
+
+    ul.breadcrumbs {
         display: flex;
-        margin-block: 1rem;
 
-        ul.breadcrumbs {
-            display: flex;
+        li {
 
-            li {
+            a {
+                display: inline;
+                color: var(--active);
+                text-decoration: underline;
+                
+            }
 
-                a {
-                    display: inline;
-                    color: var(--active);
-                    text-decoration: underline;
-                    
-                }
+            a.active {
+                color: var(--dark-text);
+                text-decoration: none;
+            }
 
-                a.active {
-                    color: var(--dark-text);
-                    text-decoration: none;
-                }
-
-                span {
-                    margin-inline: .25rem;
-                }
+            span {
+                margin-inline: .25rem;
+                color: var(--dark-text);
             }
         }
     }
+}
 
 /* css to transform headings, will come back later */
 

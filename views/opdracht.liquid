@@ -1,28 +1,16 @@
 {% render 'partials/head.liquid'%}
 <main class="quest" data-zone="{{ zone_type }}">
-    {% render 'partials/breadcrumbs.liquid',
-        current_path: current_path,
-    %}
-
     {% case state %}
         {% when 'intro' %}
             <section class="intro">
                 {% comment %} heading in a partial for simple changes to margin and padding {% endcomment %}
+                {% assign full_title = "Deze vraag gaat over de " | append: quest.name %}
+
                 {% render 'partials/general-heading.liquid',
                     heading_level: 1,
-                    content: quest.title,
+                    content: full_title,
                 %}
-                <img class="landscape" src="{{ quest.image | default: quest.plant.in_bloom | default: '/assets/images/placeholder.webp' }}" alt="">
-                <div class="xp-heading">
-                    {% render 'partials/general-heading.liquid',
-                        heading_level: 2,
-                        content: quest.name,
-                    %}
-                    <p>+{{ quest.xp }}xp</p>
-                </div>
-                <p>Ga naar deze zone en bekijk alle planten goed - we gaan je hier straks een vraag over stellen :)</p>
-                <a href="?step=start" class="styled quest start">Ik ben er! - begin de opdracht</a>
-                <article class="mapwrapper">
+                                <article class="mapwrapper">
                     <svg viewBox="0 0 354 115" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_588_1362)">
                             <path d="M0 0C116.82 0 233.64 0 354 0C354 37.9454 354 75.8908 354 114.986C237.18 114.986 120.36 114.986 0 114.986C0 77.0407 0 39.0953 0 0Z" fill="#030504"/>
@@ -72,6 +60,8 @@
                         </defs>
                     </svg>
                 </article>
+                <p>Ga naar deze zone en klik op onderstaande knop om verder te gaan</p>
+                <a href="?step=start" class="styled quest start">Ik ben er! - begin de opdracht</a>
             </section>
 
         {% when 'start' %}
@@ -81,7 +71,7 @@
                     content: quest.title,
                 %}
 
-                <p>{{ quest.description | default: quest.title }}</p>
+                <p>{{ quest.description }}</p>
                 
                 <article class="options-container">
                     {% if quest.options and quest.options.size > 0 %}

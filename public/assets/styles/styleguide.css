@@ -97,7 +97,7 @@ body {
     --body-background-green: #fe8b5038;
 
     /* accents and borders */
-    --active: light-dark(#00602d, #00b253);
+    --active: light-dark(#008d48, #008d48);
     --light-border:#F7F7F7;
     --lighter-border:#B0B0B0;
     --dark-border: light-dark(#1b1b1b,#F7F7F7);
@@ -111,9 +111,9 @@ body {
     --border-round: 100%;
 
     /* buttons */
-    --correct: #015E30;
+    --correct: #008d48;
     --incorrect: #8F0000;
-    --questbutton: #004121;
+    --questbutton: #008d48;
 
     /* exclusions for light dark */
     --always-black: hsl(0, 0%, 12%);
