@@ -1,5 +1,8 @@
 {% if plants.size > 0 %}
-    <h2>Planten</h2>
+    {% render 'partials/general-heading.liquid',
+        heading_level: 2,
+        content: "Planten",
+    %}
     <ul class="flowerlist">
     {% for plant in plants %}
         {% if plant.collected %}

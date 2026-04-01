@@ -1,5 +1,4 @@
 <section class="detailpage">
-    {% render 'partials/breadcrumbs.liquid' %}
 
     {% render 'partials/breadcrumbs.liquid' 
         current_path: current_path,
@@ -10,7 +9,7 @@
         content: title,
     %}
 
-    <img style="--vt: img-{{ slug }}" class="landscape viewt" src="{{ image }}" alt="">
+    <img class="landscape" src="{{ image }}" alt="">
     {% if date %}
         <p class="date"> Geplaatst op {{ date }}</p>
     {% endif %}

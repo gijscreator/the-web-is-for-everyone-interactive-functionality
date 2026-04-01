@@ -5,7 +5,7 @@ import path from 'path';
 
 const app = express();
 const API_BASE = 'https://fdnd-agency.directus.app/items';
-const USER_ID = 2;
+const USER_ID = 12;
 
 // Endpoint for fetching plants specific to our user
 const getUserPlants = `frankendael_users_plants?filter[frankendael_users_id]=${USER_ID}&fields=frankendael_plants_id`;
@@ -139,7 +139,6 @@ app.get('/veldverkenner', async (request, response) => {
 
         const zonesWithQuestData = allZones.map(zone => {
             const plantIdsInZone = getPlantIdsFromZone(zone);
-            
             const isZoneComplete = plantIdsInZone.length > 0 && plantIdsInZone.every(plantId => collectedIds.has(plantId));
 
             statusMap[zone.slug] = isZoneComplete;
@@ -156,13 +155,18 @@ app.get('/veldverkenner', async (request, response) => {
                 zoneCompleted: isZoneComplete 
             };
         });
+
+        const completedZonesCount = zonesWithQuestData.filter(zone => zone.zoneCompleted).length;
+        const totalZonesCount = zonesWithQuestData.filter(zone => zone).length;
         
         response.render('veldverkenner.liquid', { 
             zones: zonesWithQuestData, 
+            completedCount: completedZonesCount, 
             status: statusMap, 
             progress: collectedIds.size, 
             zone_type: 'veldverkenner',
-            current_path: request.path
+            current_path: request.path,
+            totalZonesCount: totalZonesCount,
         });
     } catch (error) {
         console.error("Veldverkenner route error:", error);

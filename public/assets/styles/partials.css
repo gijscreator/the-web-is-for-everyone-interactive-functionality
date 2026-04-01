@@ -40,11 +40,13 @@ ul.carousel {
 
         h1,h2 {
             line-height: 1;
-            margin-top: 1rem
+            margin-top: 1rem;
+            text-align: left;
         }
 
         p {
             margin-block: 1rem;
+            text-align: left;
         }
 
         img.explain {
@@ -260,6 +262,10 @@ ul.my-collection {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
 
+    &:has(li.empty) {
+        grid-template-columns: 1fr;
+    }
+
     li {
         display: flex;
         flex-direction: column;
@@ -267,7 +273,7 @@ ul.my-collection {
         justify-content: space-between;
         width: 100%;
         border-radius: var(--border-card);
-        border: 1px solid black;
+        border: 1px solid var(--dark-text);
         color: var(--always-dark);
         
     }
@@ -367,7 +373,7 @@ ul.quest {
 
 /* partial general-heading.liquid */
 .heading {
-    margin-block: 1rem;
+    margin-block: 1.5rem;
 }
 
 @keyframes flowIn {
@@ -383,30 +389,6 @@ section.detailpage {
 
     img {
 
-    }
-
-    nav {
-        display: flex;
-        ul {
-            display: flex;
-
-            li {
-
-                a {
-                    color: var(--active);
-                    text-decoration: underline;
-                }
-
-                a.active {
-                    color: var(--dark-text);
-                    text-decoration: none;
-                }
-
-                span {
-                    margin-inline: .25rem;
-                }
-            }
-        }
     }
 
     p.date {
@@ -427,6 +409,36 @@ section.detailpage {
 
     }
 }
+
+
+nav.breadcrumb-container {
+
+        display: flex;
+        margin-block: 1rem;
+
+        ul.breadcrumbs {
+            display: flex;
+
+            li {
+
+                a {
+                    display: inline;
+                    color: var(--active);
+                    text-decoration: underline;
+                    
+                }
+
+                a.active {
+                    color: var(--dark-text);
+                    text-decoration: none;
+                }
+
+                span {
+                    margin-inline: .25rem;
+                }
+            }
+        }
+    }
 
 /* css to transform headings, will come back later */
 

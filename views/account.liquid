@@ -1,6 +1,8 @@
 {% render 'partials/head.liquid' %}
 <main class="acccount"> 
-    {% render 'partials/breadcrumbs.liquid' %}
+    {% render 'partials/breadcrumbs.liquid',
+        current_path: current_path,
+    %}
     {% assign welcome_message = "Welkom op jouw account " | append: user.name | append: "!" %}
     {% render 'partials/general-heading.liquid',
         heading_level: 1,

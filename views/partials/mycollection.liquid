@@ -1,3 +1,5 @@
+
+
 <ul class="my-collection">
     {% if plants.size > 0 %}
         {% if current_path == "/" %}
@@ -5,7 +7,6 @@
         {% else %}
             {% assign loop_limit = plants.size %}
         {% endif %}
-
         {% for plant in plants limit: loop_limit %}
         <li class="{{ plant.main_zone.type }}">
             <a href="/collectie/{{ plant.slug }}">
@@ -13,14 +14,14 @@
                     <h2>{{ plant.name }}</h2>
                     <h3 class="italic">{{ plant.latin | truncate: 20 }}</h3>
                 </article>
-                <img style="--vt: img-{{ plant.slug }}" class="square viewt" src="{{ plant.in_bloom }}" alt="{{ plant.name }}">
+                <img class="square" src="{{ plant.in_bloom }}" alt="{{ plant.name }}">
             </a>    
         </li>
         {% endfor %}
 
     {% else %}
-        <p>Je hebt nog niks gespaard. 
-            Start de <span> Veldverkenner </span> om meer te weten te komen over wat er groeit en je collectie aan te vullen.
-        </p>
+        <li class="empty">
+            <p> Jouw collectie is nog leeg,<a class="underlined" href="/veldverkenner"> ga naar onze Veldverkenner</a>  om meer te weten te komen over wat er groeit en je collectie aan te vullen</p>
+        </li>
     {% endif %}
 </ul>
