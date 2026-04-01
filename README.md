@@ -1,26 +1,42 @@
-# Interactive Functionality
+# Bloemenveld Frankendael
 
-Ontwerp en maak voor een opdrachtgever een interactieve toepassing die voor iedereen toegankelijk is
+Voor het Bloemenveld Frankendael ontwikkel ik een webapplicatie die bezoekers helpt de bloemen en planten in het park te ontdekken. De focus ligt op planten die op dit moment in bloei staan. De app gaat verder dan alleen informatie via interactieve opdrachten leren gebruikers de specifieke kenmerken van planten herkennen, wat zorgt voor een actieve en educatieve ervaring in het veld.
 
-De instructie vind je in: [INSTRUCTIONS.md](https://github.com/fdnd-task/the-web-is-for-everyone-interactive-functionality/blob/main/docs/INSTRUCTIONS.md)
+De focus lag hierbij op het implementeren van robuuste GET- en POST-methoden om een goede gebruikerservaring te creëren.
 
+POST-methode
+In plaats van statische informatie, heb ik een interactieve flow ontwikkeld waarbij de POST-methode drie acties tegelijkertijd afhandelt zodra een gebruiker een opdracht voltooit:
+
+Registratie: De voltooiing van de specifieke opdracht wordt direct vastgelegd in de database.
+
+Plant naar de collectie: De betreffende plant wordt toegevoegd aan de persoonlijke collectie van de gebruiker (gamification).
+
+Veldverkenner Update: De status van de betreffende zone op de veldverkenner wordt bijgewerkt, waardoor de voortgang van de bezoeker visueel zichtbaar wordt op de kaart.
+
+Data-ophaling (GET)
+Middels GET-verzoeken zorg ik ervoor dat de app altijd de meest actuele plantkenmerken en zonestatussen toont, zodat de informatie in het veld synchroon loopt met de database omgeving.
+
+Developer
+
+@GijsNagtegaal
 
 ## Inhoudsopgave
 
-  * [Beschrijving](#beschrijving)
-  * [Gebruik](#gebruik)
-  * [Kenmerken](#kenmerken)
-  * [Installatie](#installatie)
-  * [Bronnen](#bronnen)
-  * [Licentie](#licentie)
-
 ## Beschrijving
-<!-- Bij Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
-<!-- Voeg een mooie poster visual of video toe 📸 -->
-<!-- Voeg een link toe naar GitHub Pages 🌐-->
+
+Hieronder is een video te zien hoe de flow werkt:
+
+https://github.com/user-attachments/assets/101e9597-13df-40ca-96e8-2285e6c9f39d
+
+De live site is hier te vinden: https://the-web-is-for-everyone-interactive-hz3r.onrender.com/
 
 ## Gebruik
 <!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->
+
+
+
+
+
 
 ## Kenmerken
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framework of library gebruikt? -->
