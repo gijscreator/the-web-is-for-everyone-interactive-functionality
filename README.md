@@ -24,28 +24,29 @@ Developer
 
 ## Beschrijving
 
-Hieronder is een video te zien hoe de flow werkt:
+Hieronder is een video te zien hoe de opdrachten flow werkt:
 
 https://github.com/user-attachments/assets/101e9597-13df-40ca-96e8-2285e6c9f39d
+
+Verder heb ik me gefocussed op de algemene flow van de gebruiker. Hieronder een aantal afbeeldingen over hoe de ui er nu uit ziet:
+
+Ik heb een ander design gemaakt en gekozen in overleg met de opdrachtgever, 
+dit omdat ik aan meerdere personen heb gevraagd of zij het duidelijk vonden hoe je opdrachten kan doen en meer informatie kan vinden over een plant. 
+Uiteindelijk ben ik op dit design gekomen:
+
+
+<img width="698" height="445" alt="Screenshot 2026-04-02 at 13 22 40" src="https://github.com/user-attachments/assets/7ce615ed-3767-4032-a380-d0e78020604f" />
+<img width="628" height="722" alt="Screenshot 2026-04-02 at 13 22 35" src="https://github.com/user-attachments/assets/ec7cd1b1-b09a-4b21-b245-c07dfe29d4a6" />
+
+
 
 De live site is hier te vinden: https://the-web-is-for-everyone-interactive-hz3r.onrender.com/
 
 ## Gebruik
 <!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->
 
-
-
-
-
-
-## Kenmerken
-<!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framework of library gebruikt? -->
-
-## Installatie
-<!-- Bij Installatie staat hoe een andere developer aan jouw repo kan werken -->
-
-
-## Bronnen
+Het uiteindelijke doel van de webapp is dat gebruikers van de app opdrachten kunnen doen, zones afvinken en hierdoor badges verdienen. 
+Ook is het belangrijk dat je je collectie kan zien en meer info over een bloem / plant kan vinden.
 
 ## Licentie
 
