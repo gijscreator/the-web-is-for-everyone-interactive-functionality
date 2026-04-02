@@ -5,7 +5,7 @@ import path from 'path';
 
 const app = express();
 const API_BASE = 'https://fdnd-agency.directus.app/items';
-const USER_ID = 2;
+const USER_ID =4;
 
 // Endpoint for fetching plants specific to our user
 const getUserPlants = `frankendael_users_plants?filter[frankendael_users_id]=${USER_ID}&fields=frankendael_plants_id`;

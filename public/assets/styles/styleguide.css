@@ -1,17 +1,17 @@
 @font-face {
     font-family: headings;
-    src: url(/assets/fonts/heading-font.ttf);
+    src: url(/assets/fonts/heading-font.woff2);
 }
 
 @font-face {
     font-family: main;
-    src: url(/assets/fonts/main-font.ttf);
+    src: url(/assets/fonts/main-font.woff2);
 }
 
 @font-face {
     font-family: italic;
     font-style: italic;
-    src: url(/assets/fonts/italic-font.ttf);
+    src: url(/assets/fonts/italic-font.woff2);
 } 
 
 @view-transition {
