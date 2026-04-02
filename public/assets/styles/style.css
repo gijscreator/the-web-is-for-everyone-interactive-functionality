@@ -49,6 +49,11 @@ header.home {
 }
 
 main.home {
+    section {
+        animation: reveal-topdown linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 70%;
+    }
 
     div.textwrapper {
         display: flex;
@@ -66,7 +71,7 @@ main.home {
         color: var(--dark-text);
 
         a {
-            color: var(--active);
+            color: var(--active-link);
             text-decoration: underline;
             font-weight: 900;
             display: inline;
@@ -628,7 +633,7 @@ main.collectie {
             }
 
             &.active {
-                background-color: var(--active);
+                background-color: var(--active-link);
                 color: var(--light-text);
             }
         }
@@ -772,15 +777,15 @@ footer.main-footer {
 
             &.active {
 
-                color: var(--active);
+                color: var(--active-link);
 
                 svg {
                     path {
-                        color: var(--active);
-                        fill: var(--active);
+                        color: var(--active-link);
+                        fill: var(--active-link);
                     }
-                    color: var(--active);
-                    fill: var(--active);
+                    color: var(--active-link);
+                    fill: var(--active-link);
                 }
             }
 

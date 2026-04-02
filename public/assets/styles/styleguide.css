@@ -97,7 +97,8 @@ body {
     --body-background-green: #fe8b5038;
 
     /* accents and borders */
-    --active: light-dark(#008d48, #008d48);
+    --active: light-dark(#00602d, #008b48);
+    --active-link: light-dark(#00602d, #00c365);
     --light-border:#F7F7F7;
     --lighter-border:#B0B0B0;
     --dark-border: light-dark(#1b1b1b,#F7F7F7);
@@ -285,7 +286,7 @@ span.bold {
 .badge {
     width: fit-content;
     border-radius: var(--border-badge);
-    border: 1px solid var(--dark-border);
+    border: 1px solid var(--always-black);
     padding: .4rem;
 }
 
@@ -394,4 +395,26 @@ img.portrait {
     border-radius: .5rem;
     max-width: 12.5rem;
     border-radius: var(--border-image);
+}
+
+@keyframes reveal-sideways {
+    from { 
+        opacity: 0; 
+        transform: translateX(2rem) scale(0.8);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes reveal-topdown {
+    from { 
+        opacity: 0; 
+        transform: translateY(2rem) scale(0.8);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1);
+    }
 }

@@ -190,6 +190,7 @@ ul.news {
         border-bottom: 1px solid var(--dark-background);
         color: var(--dark-text);
 
+
         div {
             display: flex;
             flex-direction: column;
@@ -211,8 +212,6 @@ ul.news {
     p {
         color: inherit;
     }
-
-
 }
 
 /* horizontal news styling for home page */
@@ -224,6 +223,7 @@ ul.news.horizontal {
     
     li {
         width: fit-content;
+        flex: 0 0 auto;
         height: 100%;
         flex-direction: column;
         border-bottom: none;
@@ -232,6 +232,13 @@ ul.news.horizontal {
         border-radius: var(--border-card);
         border: 1px solid var(--dark-border);
         color: var(--always-dark);
+        animation: reveal-sideways  linear both;
+        animation-timeline: view(inline); 
+        animation-range: entry 0% entry 70%;
+        
+        @media (prefers-reduced-motion: reduce) {
+            animation: none;
+        }
     }
 
     img {
@@ -427,7 +434,7 @@ section.detailpage {
 
             a {
                 display: inline;
-                color: var(--active);
+                color: var(--active-link);
                 text-decoration: underline;
                 
             }
