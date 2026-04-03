@@ -86,6 +86,7 @@ body {
     --voedseleiland-transparent: #cfe1b936;
     --heuvel-transparent: #d4c8e247;
     --waterplandgebied-transparent: #daf1fe49;
+    
 
     /* site wide colors */
     --light-background: light-dark(#F7F7F7, hsl(0, 0%, 12%));
@@ -97,8 +98,8 @@ body {
     --body-background-green: #fe8b5038;
 
     /* accents and borders */
-    --active: light-dark(#00602d, #008b48);
-    --active-link: light-dark(#00602d, #00c365);
+    --active: light-dark(#356c51, #356c51);
+    --active-link: light-dark(#356c51, #00c365);
     --light-border:#F7F7F7;
     --lighter-border:#B0B0B0;
     --dark-border: light-dark(#1b1b1b,#F7F7F7);
@@ -112,9 +113,9 @@ body {
     --border-round: 100%;
 
     /* buttons */
-    --correct: #008d48;
+    --correct: #356c51;
     --incorrect: #8F0000;
-    --questbutton: #008d48;
+    --questbutton: #356c51;
 
     /* exclusions for light dark */
     --always-black: hsl(0, 0%, 12%);
@@ -163,8 +164,8 @@ svg.decorative {
     fill: var(--dark-text);
 
     path {
-        fill: var(--dark-text);
         color: var(--dark-text);
+        fill: var(--dark-text);
     }
 }
 

@@ -119,7 +119,7 @@ ul.flowerlist {
     img {
         display: flex;
         width: fit-content;
-        max-width: 40%;
+        max-width: 42%;
         border-radius: .5rem 0 0 .5rem;
     }
 
