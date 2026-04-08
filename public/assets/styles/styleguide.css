@@ -305,15 +305,25 @@ span.bold {
 /* zone styling colors */
 
 .sierlint {
+
     background-color: var(--sierlint);
 
     &::-webkit-progress-value { 
         background-color: var(--sierlint); 
     }
+
+    .breadcrumbs {
+        --light-text: #1a1a1a;
+        --dark-text: #1a1a1a;
+    }
 }
 
 .voedseleiland {
+    --questbutton: #D89075;
+
     background-color: var(--voedseleiland);
+
+
 }
 
 .heuvel {
