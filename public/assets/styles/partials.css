@@ -430,6 +430,15 @@ section.detailpage {
 
     ul.breadcrumbs {
         display: flex;
+        justify-content: center;
+        align-items: center;
+
+            svg {
+                fill: var(--dark-text);
+            path {
+                fill: var(--dark-text);
+            }
+        }
 
         li {
 

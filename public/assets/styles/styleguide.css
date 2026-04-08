@@ -365,6 +365,13 @@ progress {
         }
     }
 }
+
+.separator {
+    margin-inline: .5rem;
+    font-size: var(--paragraph);
+    color: var(--dark-text);
+}
+
 /* images */
 
 img.square {

@@ -58,9 +58,8 @@
             <button class="styled reset">Voortgang wissen</button>
         </form>
 
-        <form class="logout" action="/welcome" method="GET">
-            <button class="styled logout">Uitloggen</button>
-        </form>
+        <a class="styled logout" href="/logout">Uitloggen</a>
+
     </section>
 </main>
 {% render 'partials/foot.liquid', current_path: current_path %}
