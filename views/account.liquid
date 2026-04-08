@@ -3,7 +3,9 @@
     {% render 'partials/breadcrumbs.liquid',
         current_path: current_path,
     %}
+
     {% assign welcome_message = "Welkom op jouw account " | append: user.name | append: "!" %}
+
     {% render 'partials/general-heading.liquid',
         heading_level: 1,
         content: welcome_message,
@@ -18,18 +20,26 @@
                 heading_level: 2,
                 content: user.name,
             %}
-            <p>🪴 {{ total_plants }} Planten verzameld</p>
+
+            {% assign totalplantstext = "🪴 " | append: total_plants | append: " Planten verzameld" %}
+
+            {% render 'partials/general-paragraph.liquid',
+                class: "",
+                content: totalplantstext,
+            %}
         </article>
     </section>
 
     <section>
         {% assign progress = "Nog " | append: user.xp | append: "xp tot level 3" %}
+
         {% render 'partials/general-heading.liquid',
             heading_level: 2,
             content: progress,
         %}
         <label for="">{{ user.xp }}</label>
-        <progress class="{{ zone_type }}sierlint" id="opdracht-{{ zone_name }}-{{ zone_slug }}" max="100" value="50"></progress>
+
+        <progress class="{{ zone_type }}sierlint" id="opdracht-{{ zone_name }}-{{ zone_slug }}" max="100" value="{{ progress }}"></progress>
     </section>
 
     <section>

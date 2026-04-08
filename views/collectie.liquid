@@ -12,14 +12,22 @@
     <section id="plant-list">
         {% if current_path == '/collectie/in_bloom' %}
             {% assign heading_content = "Alle bloemen die in bloei zijn" %}
+            {% assign colltext = "Hieronder zie je jouw verzamelde planten die momenteel in de bloei staan" %}
         {% else %}
             {% assign heading_content = "Alle bloemen die niet in de bloei zijn" %}
+            {% assign colltext = "Hieronder zie je jouw verzamelde planten die momenteel niet in de bloei staan" %}
         {% endif %}
 
         {% render 'partials/general-heading.liquid',
             heading_level: 1,
             content: heading_content
         %}
+
+        {% render 'partials/general-paragraph.liquid',
+            class: "",
+            content: colltext,
+        %}
+
         {% render 'partials/mycollection.liquid', 
             plants: plants, 
             zone_type: zone_type, 

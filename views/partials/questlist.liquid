@@ -1,6 +1,6 @@
 <ul class="quest">
     {% for plant in plants %}
-        {% if plant.quest %}
+        {% if plant.quest and plant.collected == false %}
             <li class="{{ zone_type }}">
                 <section>
                     <article>
@@ -10,11 +10,6 @@
                                     <path d="M1.58301 16.5C1.58301 16.5 7.91634 5.5 18.9997 5.5C30.083 5.5 36.4163 16.5 36.4163 16.5C36.4163 16.5 30.083 27.5 18.9997 27.5C7.91634 27.5 1.58301 16.5 1.58301 16.5Z" stroke="#004121" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path d="M18.9997 20.625C21.623 20.625 23.7497 18.7782 23.7497 16.5C23.7497 14.2218 21.623 12.375 18.9997 12.375C16.3763 12.375 14.2497 14.2218 14.2497 16.5C14.2497 18.7782 16.3763 20.625 18.9997 20.625Z" stroke="#004121" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                                 </g>
-                                <defs>
-                                    <clipPath id="clip0_387_604">
-                                        <rect width="38" height="33" fill="white"/>
-                                    </clipPath>
-                                </defs>
                             </svg>
                         </div>
                         <hgroup class="headingwrapper">
@@ -22,7 +17,6 @@
                             <p>+{{ plant.quest.xp | default: 25 }}xp</p>
                         </hgroup>
                     </article>
-                    
                     <p>{{ plant.quest.description | truncatewords: 10 }}</p>
                 </section>
 

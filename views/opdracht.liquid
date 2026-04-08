@@ -1,5 +1,9 @@
 {% render 'partials/head.liquid'%}
 <main class="quest" data-zone="{{ zone_type }}">
+    {% render 'partials/breadcrumbs.liquid',
+        current_path: current_path,
+    %}
+    
     {% case state %}
         {% when 'intro' %}
             <section class="intro">

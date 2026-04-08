@@ -1,45 +1,53 @@
-gsap.registerPlugin(MotionPathPlugin);
+document.addEventListener("DOMContentLoaded", () => {
 
-// Check for system preference once at the start
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
 
-/* ------------ Animate plant in collection --------------- */
+    const urlParams = new URLSearchParams(window.location.search);
+    const isCorrect = urlParams.get('step') === 'correct' && !urlParams.get('step')?.includes('incorrect');
+    const leafCanvas = document.getElementById("leafCanvas");
+    const collectForm = document.querySelector('.collectbutton');
 
-const collectForm = document.querySelector('.collectbutton');
-const plant = document.querySelector('.plant-animated');
-const plantIcon = document.querySelector('.collection-icon');
+    if (isCorrect || leafCanvas || collectForm) {
+        gsap.registerPlugin(MotionPathPlugin);
+    }
 
-if (collectForm && plant && plantIcon) {
-    collectForm.addEventListener('submit', function(event) {
-        // If user prefers reduced motion, let the form submit normally without animation
-        if (prefersReducedMotion) {
-            return; 
-        }
+    // 3. Conditional Initialization
+    if (collectForm) {
+        initCollectAnimation(collectForm);
+    }
 
-        event.preventDefault();
+    if (isCorrect) {
+        initConfetti();
+    }
+
+    if (leafCanvas) {
+        initLeafFalling(leafCanvas);
+    }
+});
+
+
+function initCollectAnimation(form) {
+    const plant = document.querySelector('.plant-animated');
+    const plantIcon = document.querySelector('.collection-icon');
+    if (!plant || !plantIcon) return;
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
         const iconRect = plantIcon.getBoundingClientRect();
         const plantRect = plant.getBoundingClientRect();
         const targetX = iconRect.left + (iconRect.width / 2) - (plantRect.width / 2);
         const targetY = iconRect.top + (iconRect.height / 2) - (plantRect.height / 2);
 
         gsap.set(plant, { 
-            display: "block",
-            position: "fixed",
-            top: 0,
-            left: 0,
-            x: -plantRect.width - 50, 
-            y: window.innerHeight / 2, 
-            opacity: .6,
-            scale: 1.6, 
-            visibility: "visible"
+            display: "block", position: "fixed", top: 0, left: 0,
+            x: -plantRect.width - 50, y: window.innerHeight / 2, 
+            opacity: .6, scale: 1.6, visibility: "visible"
         });
 
         gsap.to(plant, {
-            duration: 1.2, 
-            opacity: 1,
-            scale: 0.2,
-            rotation: 45,
-            ease: "power2.inOut",
+            duration: 1.2, opacity: 1, scale: 0.2, rotation: 45, ease: "power2.inOut",
             motionPath: {
                 path: [{ x: window.innerWidth / 3, y: -100 }, { x: targetX, y: targetY }],
                 curviness: 1.5
@@ -47,35 +55,27 @@ if (collectForm && plant && plantIcon) {
             onComplete: () => {
                 gsap.to(plantIcon, {
                     scale: 1.4, duration: 0.15, yoyo: true, repeat: 1, ease: "back.out(2)",
-                    onComplete: () => collectForm.submit()
+                    onComplete: () => form.submit()
                 });
             }
         });
     });
 }
 
-/* ------------ Animate leaves when quest is wrong --------------- */
-
-window.addEventListener("load", () => {
-    // Skip heavy canvas animations if reduced motion is requested
-    if (prefersReducedMotion) return;
-
-    const canvas = document.getElementById("leafCanvas");
-    if (!canvas) return;
-
+function initLeafFalling(canvas) {
     const ctx = canvas.getContext("2d");
     const leafImg = new Image();
-    leafImg.src = "/assets/images/leaf.webp";
+    leafImg.src = "/assets/images/leaf.webp"; 
 
     let width, height, leaves = [];
     const leafCount = 40;
 
-    function resize() {
+    const resize = () => {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
-    }
-
-    window.addEventListener("resize", resize);
+    };
+    
+    window.addEventListener("resize", resize, { passive: true });
     resize();
 
     leafImg.onload = () => {
@@ -89,34 +89,23 @@ window.addEventListener("load", () => {
                 sideSway: Math.random() * 100
             };
 
-            // Main Falling Animation
             gsap.to(leaf, {
-                y: height + 100,
-                duration: gsap.utils.random(4, 8),
-                repeat: -1,
-                ease: "none",
-                delay: gsap.utils.random(0, .5)
+                y: height + 100, duration: gsap.utils.random(4, 8),
+                repeat: -1, ease: "none", delay: gsap.utils.random(0, 0.5)
             });
 
-            // Swaying
             gsap.to(leaf, {
-                sideSway: "+=50",
-                rotation: "+=180",
-                duration: gsap.utils.random(2, 4),
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut"
+                sideSway: "+=50", rotation: "+=180", duration: gsap.utils.random(2, 4),
+                repeat: -1, yoyo: true, ease: "sine.inOut"
             });
 
             leaves.push(leaf);
         }
-        
         gsap.ticker.add(render);
     };
 
     function render() {
         ctx.clearRect(0, 0, width, height);
-        
         leaves.forEach(leaf => {
             ctx.save();
             ctx.globalAlpha = leaf.opacity;
@@ -127,44 +116,20 @@ window.addEventListener("load", () => {
             ctx.restore();
         });
     }
-});
+}
 
-/* ------------ Animate confetti when quest is right --------------- */
+function initConfetti() {
 
-window.addEventListener("load", () => {
-    const url = window.location.search;
+    const duration = 3000;
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
-    // Skip confetti if user prefers reduced motion
-    if (url.includes("step=correct") && !url.includes("incorrect") && !prefersReducedMotion) {
-        
-        const duration = 3 * 1000;
-        const animationEnd = Date.now() + duration;
-        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+    const interval = setInterval(() => {
+        const timeLeft = animationEnd - Date.now();
+        if (timeLeft <= 0) return clearInterval(interval);
 
-        function randomInRange(min, max) {
-            return Math.random() * (max - min) + min;
-        }
-
-        const interval = setInterval(function() {
-            const timeLeft = animationEnd - Date.now();
-
-            if (timeLeft <= 0) {
-                return clearInterval(interval);
-            }
-
-            const particleCount = 50 * (timeLeft / duration);
-            
-            confetti({
-                ...defaults,
-                particleCount,
-                origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
-            });
-            
-            confetti({
-                ...defaults,
-                particleCount,
-                origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
-            });
-        }, 250);
-    }
-});
+        const particleCount = 50 * (timeLeft / duration);
+        confetti({ ...defaults, particleCount, origin: { x: Math.random() * 0.2 + 0.1, y: Math.random() - 0.2 } });
+        confetti({ ...defaults, particleCount, origin: { x: Math.random() * 0.2 + 0.7, y: Math.random() - 0.2 } });
+    }, 250);
+}

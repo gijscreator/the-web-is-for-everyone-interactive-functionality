@@ -462,6 +462,10 @@ section.detailpage {
     }
 }
 
+p.paragraph {
+    margin-block: 1rem;
+}
+
 /* css to transform headings, will come back later */
 
 /* will-change: translateY;

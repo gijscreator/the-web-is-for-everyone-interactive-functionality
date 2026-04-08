@@ -8,25 +8,31 @@
     zone_name: zone.name,
     zone_slug: zone_slug,
     current_path: current_path,
+    stats: stats,
 %}
 
 <main class="zone">
-<section>
-    <h2>Opdrachten</h2>
-    {% render 'partials/questlist.liquid', 
-        zone_slug: zone_slug,
-        zone_type: zone.type, 
-        plants: plants
-    %}
-</section>
+    {% assign active_quests = plants | where: "collected", false %}
 
-<section>
-    {% render 'partials/flowerlist.liquid', 
-        plants: plants, 
-        zone_type: zone.type, 
-        zone_slug: zone_slug,
-        allPlants: allPlants
-    %}
-</section>
+    <section>
+        {% render 'partials/general-heading.liquid',
+            heading_level: 2,
+            content: "Opdrachten",
+        %}
+        {% render 'partials/questlist.liquid', 
+            zone_slug: zone_slug,
+            zone_type: zone.type, 
+            plants: plants
+        %}
+    </section>
+
+    <section>
+        {% render 'partials/flowerlist.liquid', 
+            plants: plants, 
+            zone_type: zone.type, 
+            zone_slug: zone_slug,
+            allPlants: allPlants
+        %}
+    </section>
 </main>
 {% render 'partials/foot.liquid', current_path: current_path %}
