@@ -1,7 +1,10 @@
+
+
 import express from 'express';
 import { Liquid } from 'liquidjs';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 const API_BASE = 'https://fdnd-agency.directus.app/items';
@@ -10,6 +13,7 @@ const USER_ID =4;
 // Endpoint for fetching plants specific to our user
 const getUserPlants = `frankendael_users_plants?filter[frankendael_users_id]=${USER_ID}&fields=frankendael_plants_id`;
 
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
@@ -125,6 +129,10 @@ app.get('/', async (request, response) => {
         console.error("Error fetching home data:", error);
         response.status(500).send("Internal Server Error");
     }
+});
+
+app.get('/login', (request, response) => {
+    response.render('login.liquid');
 });
 
 app.get('/veldverkenner', async (request, response) => {
