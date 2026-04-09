@@ -1,12 +1,11 @@
 {% render 'partials/head.liquid' %}
+
 <main class="login">
-    <img src="/assets/images/logo_transparent.webp" alt="Frankendael Logo">
     
     {% render 'partials/general-heading.liquid',
         heading_level: 1,
         content: "Log in",
     %}
-
     <section>
         <form action="/login" method="POST">
                 <label for="username">Naam</label>
@@ -40,4 +39,3 @@
         </div>
     </section>
 </main>
-{% render 'partials/foot.liquid' %}

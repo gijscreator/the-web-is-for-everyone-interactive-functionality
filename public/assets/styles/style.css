@@ -733,7 +733,7 @@ acccount page
 ***********************************/
 
 main.login {
-    
+
 }
 
 /***********************************
@@ -746,6 +746,17 @@ body:has(.main-footer) {
     main:not(.veldverkenner) {
         margin-bottom: 15dvh;
     }
+}
+
+body:has(main.login) {
+    min-height: 100dvh;
+
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+        url("/assets/images/leafs.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
+
 }
 
 /* dot navigation for the welcome page */
