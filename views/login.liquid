@@ -2,31 +2,35 @@
 
 <main class="login">
     
-    {% render 'partials/general-heading.liquid',
-        heading_level: 1,
-        content: "Log in",
-    %}
+
     <section>
+
+        {% render 'partials/general-heading.liquid',
+            heading_level: 1,
+            content: "Log in",
+        %}
         <form action="/login" method="POST">
                 <label for="username">Naam</label>
                 <input 
                     type="text" 
                     id="username" 
                     name="username" 
-                    placeholder="Typ je naam..." 
+                    placeholder="Jouw naam" 
                     required
                 > 
-            <button type="submit">
+            <button class="styled" type="submit">
                 Inloggen
             </button>
         </form>
 
-        {% render 'partials/general-heading.liquid',
-            heading_level: 1,
-            content: "Of log in met",
-        %}
+
         
-        <div class="social-login">
+        <article>
+
+            {% render 'partials/general-heading.liquid',
+                heading_level: 2,
+                content: "Of log in met",
+            %}
             <button type="button">
                 Log in met Google
             </button>
@@ -36,6 +40,6 @@
             <button type="button">
                 Log in met Microsoft
             </button>
-        </div>
+        </article>
     </section>
 </main>

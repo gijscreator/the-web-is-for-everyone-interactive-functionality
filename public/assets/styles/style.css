@@ -733,7 +733,57 @@ acccount page
 ***********************************/
 
 main.login {
+    section {
+        color: var(--always-light);
 
+        form {
+            display: flex;
+            flex-direction: column;
+            height: 30dvh;
+            justify-content: space-around;
+            color: inherit;
+        }
+
+        label {
+            color: var(--always-light)
+        }
+
+        input {
+            width: 100%;
+            height: 3.5rem;
+            border-radius: var(--border-button);
+            border: none;
+            padding-left: 1rem;
+            background-color: var(--light-background);
+            color: var(--dark-text);
+            border: 1px solid var(--light-border);
+
+            input::placeholder {
+                color: var(--dark-text);
+            }
+        }
+
+        button {
+            border: 1px solid var(--always-light);
+            background-color: var(--active);
+            width: 100%;
+            height: 3.5rem;
+            border-radius: var(--border-button);
+            color: inherit;
+        }
+
+        article {
+            display: flex;
+            flex-direction: column;
+            height: 45dvh;
+            justify-content: space-around;
+            color: inherit;
+        }
+
+        h1, h2 {
+            color: inherit;
+        }
+    }
 }
 
 /***********************************
@@ -748,7 +798,12 @@ body:has(.main-footer) {
     }
 }
 
-body:has(main.login) {
+html:has(main.login) {
+
+    body {
+        background-color: transparent;
+    }
+
     min-height: 100dvh;
 
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
