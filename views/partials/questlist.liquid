@@ -1,6 +1,8 @@
+{% assign active_quests = plants | where: "collected", false %}
+
 <ul class="quest">
-    {% for plant in plants %}
-        {% if plant.quest and plant.collected == false %}
+    {% for plant in active_quests %}
+        {% if plant.quest %}
             <li class="{{ zone_type }}">
                 <section>
                     <article>
@@ -13,7 +15,7 @@
                             </svg>
                         </div>
                         <hgroup class="headingwrapper">
-                            <h3>Opdracht {{plant.quest.id}}</h3>
+                            <h3>Opdracht {{ plant.quest.id }}</h3>
                             <p>+{{ plant.quest.xp | default: 25 }}xp</p>
                         </hgroup>
                     </article>

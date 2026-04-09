@@ -735,17 +735,20 @@ acccount page
 main.login {
     section {
         color: var(--always-light);
+        
 
         form {
             display: flex;
             flex-direction: column;
-            height: 30dvh;
-            justify-content: space-around;
+            height: 20dvh;
+            gap: 1rem;
             color: inherit;
+            margin-top: 2rem;
         }
 
         label {
-            color: var(--always-light)
+            color: var(--always-light);
+            font-size: 1rem;
         }
 
         input {
@@ -757,9 +760,11 @@ main.login {
             background-color: var(--light-background);
             color: var(--dark-text);
             border: 1px solid var(--light-border);
+            font-size: 1rem;
 
             input::placeholder {
                 color: var(--dark-text);
+                font-size: 1rem;
             }
         }
 
@@ -806,7 +811,7 @@ html:has(main.login) {
 
     min-height: 100dvh;
 
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), 
         url("/assets/images/leafs.webp");
     background-repeat: no-repeat;
     background-position: center;
