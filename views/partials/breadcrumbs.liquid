@@ -18,7 +18,7 @@
                     
                 <li class="breadcrumb-item">
                     <a href="{{ cumulative_path }}" class="{% if forloop.last %}active{% endif %}">
-                        {{ part | capitalize | replace: "-", " " | truncate: 30 }}
+                        {{ part | capitalize | replace: "-", " " | truncate: 20 }}
                     </a>
                     
                     {% unless forloop.last %}
